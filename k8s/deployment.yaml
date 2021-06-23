@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: tpi-hello-deployment
+    labels:
+        app: tpi-hello
+spec:
+    replicas: 5
+    selector: 
+        matchLabels:
+            app: tpi-hello
+    template:
+        metadata:
+            labels:
+                app: tpi-hello
+        spec:
+            containers:
+                - name: tpi-hello
+                  image: tpi-hello:latest
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - containerPort: 8080        
